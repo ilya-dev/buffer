@@ -44,7 +44,7 @@ class BufferSpec extends ObjectBehavior {
 
     function it_splits_a_string_correctly()
     {
-
+        $this->explode('')->shouldReturn([]);
     }
 
     function it_disallows_an_invalid_separator()

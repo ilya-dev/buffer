@@ -38,6 +38,12 @@ class Buffer {
     public function explode($separator)
     {
         $this->disallowInvalidInput($separator);
+
+        $pieces = [];
+
+
+
+        return $pieces;
     }
 
     /**
