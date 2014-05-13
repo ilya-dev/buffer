@@ -12,6 +12,13 @@ class Buffer {
     protected $string;
 
     /**
+     * The array of characters that act like a "switch".
+     *
+     * @var array
+     */
+    protected $switchCharacters = [];
+
+    /**
      * The constructor.
      *
      * @param string $string
@@ -54,6 +61,27 @@ class Buffer {
         }
 
         $this->string = $string;
+    }
+
+    /**
+     * Add a new character.
+     *
+     * @param string $switchCharacter
+     * @return void
+     */
+    public function beAwareOf($switchCharacter)
+    {
+        $this->switchCharacters[] = $switchCharacter;
+    }
+
+    /**
+     * Get the array of "switches".
+     *
+     * @return array
+     */
+    public function getSwitchCharacters()
+    {
+        return $this->switchCharacters;
     }
 
 }

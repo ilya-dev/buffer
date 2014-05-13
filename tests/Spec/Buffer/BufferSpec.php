@@ -28,4 +28,11 @@ class BufferSpec extends ObjectBehavior {
         $this->shouldNotThrow('InvalidArgumentException')->duringSetString('bar');
     }
 
+    function it_receives_a_switch_character()
+    {
+        $this->beAwareOf('<');
+
+        $this->getSwitchCharacters()->shouldReturn(['<']);
+    }
+
 }
