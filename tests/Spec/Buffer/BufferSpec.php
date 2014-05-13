@@ -45,12 +45,14 @@ class BufferSpec extends ObjectBehavior {
     function it_splits_a_string_correctly()
     {
         $this->setString('');
-
         $this->explode(':')->shouldReturn([]);
 
         $this->setString('foo:bar:baz');
-
         $this->explode(':')->shouldReturn(['foo', 'bar', 'baz']);
+
+        $this->beAwareOf("\"");
+        $this->setString('foo:"bar:baz"');
+        $this->explode(':')->shouldReturn(['foo', 'bar:baz']);
     }
 
     function it_disallows_an_invalid_separator()
