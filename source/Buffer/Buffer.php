@@ -37,15 +37,7 @@ class Buffer {
      */
     public function explode($separator)
     {
-        // Check out the explanation below
-        // if you have no idea what's going on.
-
-        if ( ! is_string($separator))
-        {
-            throw new InvalidArgumentException(
-                'Expected to receive a string, but got '.gettype($separator)
-            );
-        }
+        $this->disallowInvalidInput($separator);
     }
 
     /**
@@ -61,23 +53,12 @@ class Buffer {
     /**
      * Set the string you want to work with.
      *
-     * @throws InvalidArgumentException
      * @param string $string
      * @return void
      */
     public function setString($string)
     {
-        // We perform a type check
-        // to avoid any potential bugs.
-        // Make sure to convert everything you pass
-        // to __construct or setString to a string.
-
-        if ( ! is_string($string))
-        {
-            throw new InvalidArgumentException(
-                'Expected to receive a string, but got '.gettype($string)
-            );
-        }
+        $this->disallowInvalidInput($string);
 
         $this->string = $string;
     }
@@ -85,21 +66,12 @@ class Buffer {
     /**
      * Add a new character.
      *
-     * @throws InvalidArgumentException
      * @param string $switchCharacter
      * @return void
      */
     public function beAwareOf($switchCharacter)
     {
-        // See the notice above regarding type checks.
-        // You got it, just hold the Page Up button.
-
-        if ( ! is_string($switchCharacter))
-        {
-            throw new InvalidArgumentException(
-                'Expected to receive a string, but got '.gettype($switchCharacter)
-            );
-        }
+        $this->disallowInvalidInput($switchCharacter);
 
         $this->switchCharacters[] = $switchCharacter;
     }
@@ -114,4 +86,27 @@ class Buffer {
         return $this->switchCharacters;
     }
 
+    /**
+     * Throw an exception if the input is not a string.
+     *
+     * @throws InvalidArgumentException
+     * @param mixed $input
+     * @return void
+     */
+    protected function disallowInvalidInput($input)
+    {
+        // We perform a type check
+        // to avoid any potential bugs.
+        // Make sure to convert everything you pass
+        // to __construct, explode or setString to a string.
+
+        if ( ! is_string($input))
+        {
+            throw new InvalidArgumentException(
+                'Expected to receive a string, but got '.gettype($input)
+            );
+        }
+    }
+
 }
+
