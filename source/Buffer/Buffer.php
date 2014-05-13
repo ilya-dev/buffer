@@ -39,9 +39,20 @@ class Buffer {
     {
         $this->disallowInvalidInput($separator);
 
+        // We store the end result here.
+
         $pieces = [];
 
+        // We append all incoming characters to the $buffer
+        // and move its content to $pieces
+        // when the $separator is reached.
 
+        $buffer = '';
+
+        // Indicates whether the incoming character
+        // cannot be treated as a separator.
+
+        $context = false;
 
         return $pieces;
     }
