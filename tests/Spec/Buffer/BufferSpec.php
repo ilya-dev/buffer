@@ -21,7 +21,7 @@ class BufferSpec extends ObjectBehavior {
         $this->getString()->shouldReturn('bar');
     }
 
-    function it_disallows_invalid_string()
+    function it_disallows_an_invalid_string()
     {
         $this->shouldThrow('InvalidArgumentException')->duringSetString(null);
 
@@ -35,11 +35,24 @@ class BufferSpec extends ObjectBehavior {
         $this->getSwitchCharacters()->shouldReturn(['<']);
     }
 
-    function it_disallows_invalid_character()
+    function it_disallows_an_invalid_character()
     {
         $this->shouldThrow('InvalidArgumentException')->duringBeAwareOf(null);
 
         $this->shouldNotThrow('InvalidArgumentException')->duringBeAwareOf('<');
     }
 
+    function it_splits_a_string_correctly()
+    {
+
+    }
+
+    function it_disallows_an_invalid_separator()
+    {
+        $this->shouldThrow('InvalidArgumentException')->duringExplode(null);
+
+        $this->shouldNotThrow('InvalidArgumentException')->duringExplode(':');
+    }
+
 }
+
