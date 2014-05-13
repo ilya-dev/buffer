@@ -30,6 +30,25 @@ class Buffer {
     }
 
     /**
+     * Split a string into pieces.
+     *
+     * @param string $separator
+     * @return array
+     */
+    public function explode($separator)
+    {
+        // Check out the explanation below
+        // if you have no idea what's going on.
+
+        if ( ! is_string($separator))
+        {
+            throw new InvalidArgumentException(
+                'Expected to receive a string, but got '.gettype($separator)
+            );
+        }
+    }
+
+    /**
      * Get the string we work with.
      *
      * @return string
