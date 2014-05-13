@@ -66,11 +66,22 @@ class Buffer {
     /**
      * Add a new character.
      *
+     * @throws InvalidArgumentException
      * @param string $switchCharacter
      * @return void
      */
     public function beAwareOf($switchCharacter)
     {
+        // See the notice above regarding type checks.
+        // You got it, just hold the Page Up button.
+
+        if ( ! is_string($switchCharacter))
+        {
+            throw new InvalidArgumentException(
+                'Expected to receive a string, but got '.gettype($switchCharacter)
+            );
+        }
+
         $this->switchCharacters[] = $switchCharacter;
     }
 

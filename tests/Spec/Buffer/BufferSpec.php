@@ -21,7 +21,7 @@ class BufferSpec extends ObjectBehavior {
         $this->getString()->shouldReturn('bar');
     }
 
-    function it_disallows_invalid_input()
+    function it_disallows_invalid_string()
     {
         $this->shouldThrow('InvalidArgumentException')->duringSetString(null);
 
@@ -33,6 +33,13 @@ class BufferSpec extends ObjectBehavior {
         $this->beAwareOf('<');
 
         $this->getSwitchCharacters()->shouldReturn(['<']);
+    }
+
+    function it_disallows_invalid_character()
+    {
+        $this->shouldThrow('InvalidArgumentException')->duringBeAwareOf(null);
+
+        $this->shouldNotThrow('InvalidArgumentException')->duringBeAwareOf('<');
     }
 
 }
