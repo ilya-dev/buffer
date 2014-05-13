@@ -104,6 +104,17 @@ class Buffer {
     }
 
     /**
+     * Determine whether the given character is a "switch".
+     *
+     * @param string $character
+     * @return boolean
+     */
+    protected function isSwitch($character)
+    {
+        return in_array($character, $this->switchCharacters, true);
+    }
+
+    /**
      * Throw an exception if the input is not a string.
      *
      * @throws InvalidArgumentException
