@@ -1,5 +1,7 @@
 <?php namespace Buffer;
 
+use InvalidArgumentException;
+
 class Buffer {
 
     /**
@@ -33,11 +35,24 @@ class Buffer {
     /**
      * Set the string you want to work with.
      *
+     * @throws InvalidArgumentException
      * @param string $string
      * @return void
      */
     public function setString($string)
     {
+        // We perform a type check
+        // to avoid any potential bugs.
+        // Make sure to convert everything you pass
+        // to __construct or setString to a string.
+
+        if ( ! is_string($string))
+        {
+            throw new InvalidArgumentException(
+                'Expected to receive a string, but got '.gettype($string)
+            );
+        }
+
         $this->string = $string;
     }
 

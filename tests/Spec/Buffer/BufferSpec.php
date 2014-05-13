@@ -21,4 +21,11 @@ class BufferSpec extends ObjectBehavior {
         $this->getString()->shouldReturn('bar');
     }
 
+    function it_disallows_invalid_input()
+    {
+        $this->shouldThrow('InvalidArgumentException')->duringSetString(null);
+
+        $this->shouldNotThrow('InvalidArgumentException')->duringSetString('bar');
+    }
+
 }
