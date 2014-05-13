@@ -1,0 +1,8 @@
+formatter.name: pretty
+
+suites:
+  buffer_suite:
+    namespace: Buffer
+    src_path: source
+    spec_path: tests
+    spec_prefix: Spec
