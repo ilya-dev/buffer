@@ -14,4 +14,11 @@ class BufferSpec extends ObjectBehavior {
         $this->shouldHaveType('Buffer\Buffer');
     }
 
+    function it_receives_a_string()
+    {
+        $this->setString('bar');
+
+        $this->getString()->shouldReturn('bar');
+    }
+
 }
