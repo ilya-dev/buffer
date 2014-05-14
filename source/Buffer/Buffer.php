@@ -40,27 +40,22 @@ class Buffer {
         $this->disallowInvalidInput($separator);
 
         // We store the end result here.
-
         $pieces = [];
 
         // We append all incoming characters to the $buffer
         // and move its content to $pieces
         // when the $separator is reached.
-
         $buffer = '';
 
         // Indicates whether the incoming character
         // should not be treated as a separator.
-
         $switch = false;
 
         // We split the string into an array of characters
         // and loop through it.
-
         foreach (str_split($this->string) as $character)
         {
             // If the character is a switch, invert $context and skip.
-
             if ($this->isSwitch($character))
             {
                 $switch = ! $switch;
@@ -70,12 +65,10 @@ class Buffer {
 
             // If the character is equal to the separator,
             // and the $switch is set to false.
-
             if (($character) == $separator and ! $switch)
             {
                 // Copy the buffer's value to $pieces.
                 // Clean the buffer.
-
                 $pieces[] = $buffer;
 
                 $buffer = '';
@@ -83,14 +76,12 @@ class Buffer {
             else
             {
                 // Append to the buffer.
-
                 $buffer .= $character;
             }
         }
 
         // If the buffer is not empty,
         // copy its value to $pieces.
-
         if ($buffer)
         {
             $pieces[] = $buffer;
@@ -169,7 +160,6 @@ class Buffer {
         // to avoid any potential bugs.
         // Make sure to convert everything you pass
         // to __construct, explode or setString to a string.
-
         if ( ! is_string($input))
         {
             throw new InvalidArgumentException(
