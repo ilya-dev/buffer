@@ -44,6 +44,8 @@ class BufferSpec extends ObjectBehavior {
 
     function it_splits_a_string_correctly()
     {
+        $this->explode(':')->shouldReturn(['foo']);
+
         $this->setString('');
         $this->explode(':')->shouldReturn([]);
 
