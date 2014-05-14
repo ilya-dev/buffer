@@ -55,6 +55,9 @@ class BufferSpec extends ObjectBehavior {
         $this->beAwareOf("\"");
         $this->setString('foo:"bar:baz"');
         $this->explode(':')->shouldReturn(['foo', 'bar:baz']);
+
+        $this->setString('foo:"bar:baz":wow');
+        $this->explode(':')->shouldReturn(['foo', 'bar:baz', 'wow']);
     }
 
     function it_disallows_an_invalid_separator()
