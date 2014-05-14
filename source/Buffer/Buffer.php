@@ -50,9 +50,9 @@ class Buffer {
         $buffer = '';
 
         // Indicates whether the incoming character
-        // can be treated as a separator.
+        // should not be treated as a separator.
 
-        $context = false;
+        $switch = false;
 
         // We split the string into an array of characters
         // and loop through it.
@@ -61,16 +61,17 @@ class Buffer {
         {
             // If the character is a switch, invert $context and skip.
 
-            //if ($this->isSwitch($character))
-            //{
-            //    $context = ! $context;
+            if ($this->isSwitch($character))
+            {
+                $switch = ! $switch;
 
-            //    continue;
-            //}
+                continue;
+            }
 
-            // If the character is equal to the separator.
+            // If the character is equal to the separator,
+            // and the $switch is set to false.
 
-            if (($character) == $separator)
+            if (($character) == $separator and ! $switch)
             {
                 // Copy the buffer's value to $pieces.
                 // Clean the buffer.
