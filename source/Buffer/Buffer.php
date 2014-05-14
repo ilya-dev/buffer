@@ -26,7 +26,7 @@ class Buffer {
      */
     public function __construct($string)
     {
-        $this->string = $string;
+        $this->setString($string);
     }
 
     /**
@@ -169,4 +169,3 @@ class Buffer {
     }
 
 }
-
