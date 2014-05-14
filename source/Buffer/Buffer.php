@@ -12,11 +12,11 @@ class Buffer {
     protected $string;
 
     /**
-     * The array of characters that act like a "switch".
+     * The array of selectors.
      *
      * @var array
      */
-    protected $switchCharacters = [];
+    protected $selectors = [];
 
     /**
      * The constructor.
@@ -49,23 +49,23 @@ class Buffer {
 
         // Indicates whether the incoming character
         // should not be treated as a separator.
-        $switch = false;
+        $selector = false;
 
         // We split the string into an array of characters
         // and loop through it.
         foreach (str_split($this->string) as $character)
         {
             // If the character is a switch, invert $context and skip.
-            if ($this->isSwitch($character))
+            if ($this->isSelector($character))
             {
-                $switch = ! $switch;
+                $selector = ! $selector;
 
                 continue;
             }
 
             // If the character is equal to the separator,
             // and the $switch is set to false.
-            if (($character) == $separator and ! $switch)
+            if (($character) == $separator and ! $selector)
             {
                 // Copy the buffer's value to $pieces.
                 // Clean the buffer.
@@ -116,35 +116,35 @@ class Buffer {
     /**
      * Add a new character.
      *
-     * @param string $switchCharacter
+     * @param string $selector
      * @return void
      */
-    public function beAwareOf($switchCharacter)
+    public function beAwareOf($selector)
     {
-        $this->disallowInvalidInput($switchCharacter);
+        $this->disallowInvalidInput($selector);
 
-        $this->switchCharacters[] = $switchCharacter;
+        $this->selectors[] = $selector;
     }
 
     /**
-     * Get the array of "switches".
+     * Get the array of selectors.
      *
      * @return array
      */
-    public function getSwitchCharacters()
+    public function getSelectors()
     {
-        return $this->switchCharacters;
+        return $this->selectors;
     }
 
     /**
-     * Determine whether the given character is a "switch".
+     * Determine whether the given character is a selector.
      *
      * @param string $character
      * @return boolean
      */
-    protected function isSwitch($character)
+    protected function isSelector($character)
     {
-        return in_array($character, $this->switchCharacters, true);
+        return in_array($character, $this->selectors, true);
     }
 
     /**
